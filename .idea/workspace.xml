@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f57ad123-3a72-487f-bf24-be783d297fed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/wys/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/AutomatedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/AutomatedTestImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/autoConfig.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/ProjectConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/autoConfig.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/autoConfig.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +44,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -65,7 +59,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662565888084</updated>
-      <workItem from="1662565889473" duration="1768000" />
+      <workItem from="1662565889473" duration="3374000" />
     </task>
     <servers />
   </component>
