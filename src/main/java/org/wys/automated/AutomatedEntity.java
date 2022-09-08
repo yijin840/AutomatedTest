@@ -58,19 +58,23 @@ public class AutomatedEntity implements Serializable {
     public void setHeaders(JSONObject headers) {
         this.headers = headers;
     }
+
     public AutomatedEntityBuild builder() {
         return new AutomatedEntityBuild();
     }
 
     static class AutomatedEntityBuild {
         private final AutomatedEntity entity;
+
         public AutomatedEntityBuild() {
             entity = new AutomatedEntity();
         }
+
         public AutomatedEntityBuild type(String type) {
             entity.type = type;
             return this;
         }
+
         public AutomatedEntity build() {
             return entity;
         }

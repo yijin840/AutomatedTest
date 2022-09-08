@@ -1,13 +1,5 @@
 package org.wys.automated;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.fasterxml.jackson.dataformat.yaml.YAMLParser;
-import org.yaml.snakeyaml.Yaml;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -35,7 +27,7 @@ public class AutomatedConfig {
     }
 
     public UrlEntity getUrlEntity(String url) {
-        return projectConfig.getTestUrl().stream().filter(u->u.getUrl().equals(url)).findFirst().orElse(null);
+        return projectConfig.getTestUrl().stream().filter(u -> u.getUrl().equals(url)).findFirst().orElse(null);
     }
 
     @Override

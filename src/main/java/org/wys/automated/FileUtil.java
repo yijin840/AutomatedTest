@@ -15,8 +15,8 @@ import java.nio.charset.StandardCharsets;
 public class FileUtil {
 
     public static void saveTestJson(String fileName, JSONObject testConfig) {
-        try(FileOutputStream fos = new FileOutputStream(fileName);
-            BufferedOutputStream bos = new BufferedOutputStream(fos)){
+        try (FileOutputStream fos = new FileOutputStream(fileName);
+             BufferedOutputStream bos = new BufferedOutputStream(fos)) {
             String formatJson = JSON.toJSONString(testConfig, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue
                     , SerializerFeature.WriteDateUseDateFormat);
             bos.write(formatJson.getBytes(StandardCharsets.UTF_8));
@@ -27,10 +27,10 @@ public class FileUtil {
 
     public static JSONObject loadTestJson(String fileName) {
         StringBuilder testConfig = new StringBuilder();
-        try(FileInputStream fis = new FileInputStream(fileName);
-            BufferedInputStream bis = new BufferedInputStream(fis)) {
+        try (FileInputStream fis = new FileInputStream(fileName);
+             BufferedInputStream bis = new BufferedInputStream(fis)) {
             int read;
-            while((read = bis.read()) != -1) {
+            while ((read = bis.read()) != -1) {
                 testConfig.append((char) read);
             }
         } catch (IOException e) {
