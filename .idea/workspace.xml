@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f57ad123-3a72-487f-bf24-be783d297fed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wys/automated/AutomatedConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/AutomatedConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wys/automated/AutomatedTestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/AutomatedTestImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wys/automated/HttpClientUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/HttpClientUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wys/automated/ProjectConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/ProjectConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +54,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings"
+    "settings.editor.selected.configurable": "fileTemplates"
   }
 }]]></component>
   <component name="RunManager" selected="Application.Main">
@@ -114,5 +106,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -6,10 +6,6 @@ import org.wys.automated.AutomatedTestImpl;
 import java.io.IOException;
 
 /**
- * ClassName wys
- * Package org.wys
- * Description
- *
  * @author wys
  * @date ${DATE} ${TIME}
  */

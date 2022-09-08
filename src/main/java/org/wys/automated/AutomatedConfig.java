@@ -3,10 +3,6 @@ package org.wys.automated;
 import java.util.function.Predicate;
 
 /**
- * ClassName ProjectConfig
- * Package org.wys.automated
- * Description
- *
  * @author wys
  * @date 2022/9/8 7:40
  */

@@ -18,10 +18,6 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * ClassName AutomatedTestImpl
- * Package org.wys.automated
- * Description
- *
  * @author wys
  * @date 2022/9/7 23:57
  */
