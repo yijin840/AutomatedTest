@@ -1,42 +1,73 @@
 package org.wys.automated;
 
+import java.util.List;
+
 /**
- * ClassName ProjectConfig
- * Package org.wys.automated
- * Description
- *
  * @author wys
- * @date 2022/9/8 7:40
+ * @date 2022/09/08
+ * @desc
  */
 public class ProjectConfig {
 
-    private String projectName;
+    private String name;
 
-    private String projectPath;
+    private String path;
 
     private String swaggerPath;
 
-    public String getProjectName() {
-        return projectName;
+    private String swaggerDoc;
+
+    private List<UrlEntity> testUrl;
+
+
+    public String getSwaggerDoc() {
+        return swaggerDoc;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setSwaggerDoc(String swaggerDoc) {
+        this.swaggerDoc = swaggerDoc;
     }
 
-    public String getProjectPath() {
-        return projectPath;
+    public String getName() {
+        return name;
     }
 
-    public void setProjectPath(String projectPath) {
-        this.projectPath = projectPath;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getSwaggerPath() {
         return swaggerPath;
     }
 
+    public List<UrlEntity> getTestUrl() {
+        return testUrl;
+    }
+
+    public void setTestUrl(List<UrlEntity> testUrl) {
+        this.testUrl = testUrl;
+    }
+
     public void setSwaggerPath(String swaggerPath) {
         this.swaggerPath = swaggerPath;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectConfig{" +
+                "name='" + name + '\'' +
+                ", path='" + path + '\'' +
+                ", swaggerPath='" + swaggerPath + '\'' +
+                ", swaggerDoc='" + swaggerDoc + '\'' +
+                ", filterUrl=" + testUrl +
+                '}';
     }
 }
