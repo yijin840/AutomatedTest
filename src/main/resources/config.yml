@@ -1,8 +1,6 @@
 projectConfig:
   name: demo
   path: http://localhost:8078
-  swaggerPath: /api/swagger-ui.html
-  swaggerDoc: /v2/api-docs
   testUrl: #表示要测试的URL
     - url: /testPool
       type: get
@@ -12,3 +10,7 @@ projectConfig:
       type: get
     - url: /testCachePool
       type: get
+swaggerConfig:
+  enable: true
+  path: /api/swagger-ui.html#/
+  docPath: /api/v2/api-docs

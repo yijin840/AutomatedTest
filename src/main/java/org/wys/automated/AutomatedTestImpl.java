@@ -3,7 +3,6 @@ package org.wys.automated;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import org.apache.commons.codec.binary.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -37,7 +36,7 @@ public class AutomatedTestImpl implements AutomatedTest {
                 AutomatedConfig.class);
         String name = config.getProjectConfig().getName();
         if(Objects.isNull(name) || name.length() == 0) {
-            fileName = "test";
+            fileName = "test.json";
         } else {
             fileName =  name + ".json";
         }
@@ -48,30 +47,40 @@ public class AutomatedTestImpl implements AutomatedTest {
         if (new File(fileName).exists()) {
             throw new RuntimeException("当前配置文件已存在!");
         }
-        String swaggerDoc = config.getProjectConfig().getSwaggerDoc();
-        if(Objects.isNull(swaggerDoc) || swaggerDoc.length() == 0) {
-            swaggerDoc = "/v2/api-docs";
-        }
-        String projectPath = config.getProjectConfig().getPath();
-        HttpGet httpGet = new HttpGet(projectPath + swaggerDoc);
-        JSONObject jsonObject = null;
-        try {
-            jsonObject = HttpClientUtil.execute(httpGet);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        JSONObject paths = jsonObject.getJSONObject("paths");
-        Set<String> urlKeys = paths.keySet();
         JSONObject testConfig = new JSONObject();
-        for (String key : urlKeys) {
-            if (config.containsUrl(key)) {
-                testConfig.put(key, new AutomatedEntity().builder().type(config.getUrlEntity(key).getType()).build());
-            }
-            System.out.println(key);
+        if(config.getSwaggerConfig().getEnable()) {
+            generateSwaggerApi(testConfig);
         }
-        FileUtil.saveTestJson(config.getProjectConfig().getName(), testConfig);
+        //给配置的接口生成配置项
+        generateConfigApi(testConfig);
+        FileUtil.saveTestJson(fileName, testConfig);
+    }
+    private void generateConfigApi(JSONObject testConfig) {
+        for (UrlEntity entity : config.getProjectConfig().getTestUrl()) {
+            String key = entity.getUrl();
+            String type = entity.getType();
+            //TODO 这个地方有很大的优化空间
+            if(type == null || type.length() == 0) {
+                type = "get";
+            }
+            testConfig.put(key, new AutomatedEntity().builder().type(type).build());
+        }
     }
 
+
+    private void generateSwaggerApi(JSONObject testConfig) {
+        String projectPath = config.getProjectConfig().getPath();
+        String swaggerDoc = config.getSwaggerConfig().getDocPath();
+        HttpGet httpGet = new HttpGet(projectPath + swaggerDoc);
+        JSONObject jsonObject = null;
+        jsonObject = HttpClientUtil.execute(httpGet);
+        JSONObject paths = jsonObject.getJSONObject("paths");
+        Set<String> urlKeys = paths.keySet();
+        for (String key : urlKeys) {
+            //TODO 这个地方有很大的优化空间,现在默认全用get
+            testConfig.put(key, new AutomatedEntity().builder().type("get").build());
+        }
+    }
     @Override
     public void automatedTest() {
         if (!new File(fileName).exists()) {
@@ -79,7 +88,13 @@ public class AutomatedTestImpl implements AutomatedTest {
         }
         JSONObject testConfig = FileUtil.loadTestJson(fileName);
         System.out.println(testConfig);
-        testConfig.forEach((k, v) -> testRequest(k, (JSONObject) v));
+        testConfig.forEach((k, v) ->{
+            try{
+                testRequest(k, (JSONObject) v);
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void testRequest(String path, JSONObject reqJson) {
@@ -89,33 +104,38 @@ public class AutomatedTestImpl implements AutomatedTest {
         JSONObject params = reqJson.getJSONObject("params");
         JSONObject result = reqJson.getJSONObject("result");
         JSONObject responseData = null;
-        try {
-            if (type.equalsIgnoreCase(HttpGet.METHOD_NAME)) {
-                responseData = testGet(url, headers, params);
-            } else if (type.equalsIgnoreCase(HttpPost.METHOD_NAME)) {
-                responseData = testPost(url, headers, params);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("测试异常！" + e);
+        if (type.equalsIgnoreCase(HttpGet.METHOD_NAME)) {
+            responseData = testGet(url, headers, params);
+        } else if (type.equalsIgnoreCase(HttpPost.METHOD_NAME)) {
+            responseData = testPost(url, headers, params);
         }
+
         assertResult(responseData, result);
     }
 
-    private JSONObject testGet(String url, JSONObject headers, JSONObject params) throws URISyntaxException, IOException {
+    private JSONObject testGet(String url, JSONObject headers, JSONObject params) {
         HttpGet httpGet = new HttpGet();
         headers.forEach((k, v) -> httpGet.addHeader(k, v.toString()));
         List<NameValuePair> list = new LinkedList<>();
         params.forEach((k, v) -> list.add(new BasicNameValuePair(k, v.toString())));
-        httpGet.setURI(new URIBuilder(url).setParameters(list).build());
+        try{
+            httpGet.setURI(new URIBuilder(url).setParameters(list).build());
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return HttpClientUtil.execute(httpGet);
     }
 
-    private JSONObject testPost(String url, JSONObject headers, JSONObject params) throws URISyntaxException, IOException {
+    private JSONObject testPost(String url, JSONObject headers, JSONObject params) {
         HttpPost httpPost = new HttpPost();
         headers.forEach((k, v) -> httpPost.addHeader(k, v.toString()));
         List<NameValuePair> list = new LinkedList<>();
         params.forEach((k, v) -> list.add(new BasicNameValuePair(k, v.toString())));
-        httpPost.setURI(new URIBuilder(url).setParameters(list).build());
+        try{
+            httpPost.setURI(new URIBuilder(url).setParameters(list).build());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return HttpClientUtil.execute(httpPost);
     }
 

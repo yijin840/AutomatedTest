@@ -13,20 +13,8 @@ public class ProjectConfig {
 
     private String path;
 
-    private String swaggerPath;
-
-    private String swaggerDoc;
-
     private List<UrlEntity> testUrl;
 
-
-    public String getSwaggerDoc() {
-        return swaggerDoc;
-    }
-
-    public void setSwaggerDoc(String swaggerDoc) {
-        this.swaggerDoc = swaggerDoc;
-    }
 
     public String getName() {
         return name;
@@ -44,10 +32,6 @@ public class ProjectConfig {
         this.path = path;
     }
 
-    public String getSwaggerPath() {
-        return swaggerPath;
-    }
-
     public List<UrlEntity> getTestUrl() {
         return testUrl;
     }
@@ -56,18 +40,12 @@ public class ProjectConfig {
         this.testUrl = testUrl;
     }
 
-    public void setSwaggerPath(String swaggerPath) {
-        this.swaggerPath = swaggerPath;
-    }
-
     @Override
     public String toString() {
         return "ProjectConfig{" +
                 "name='" + name + '\'' +
                 ", path='" + path + '\'' +
-                ", swaggerPath='" + swaggerPath + '\'' +
-                ", swaggerDoc='" + swaggerDoc + '\'' +
-                ", filterUrl=" + testUrl +
+                ", testUrl=" + testUrl +
                 '}';
     }
 }

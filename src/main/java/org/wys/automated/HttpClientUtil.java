@@ -2,6 +2,7 @@ package org.wys.automated;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONValidator;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -25,12 +26,17 @@ public class HttpClientUtil {
      * @return json序列化结果
      * @throws IOException IO异常
      */
-    public static JSONObject execute(HttpUriRequest request) throws IOException {
-        CloseableHttpResponse response = HttpClients.createDefault().execute(request);
-        response.setHeader("ContentType", "application/json; charset=UTF-8");
-        HttpEntity entity = response.getEntity();
-        String res = EntityUtils.toString(entity, StandardCharsets.UTF_8);
-        return JSON.parseObject(res);
+    public static JSONObject execute(HttpUriRequest request) {
+        try{
+            CloseableHttpResponse response = HttpClients.createDefault().execute(request);
+            response.setHeader("ContentType", "application/json; charset=UTF-8");
+            HttpEntity entity = response.getEntity();
+            String res = EntityUtils.toString(entity, StandardCharsets.UTF_8);
+            return JSON.parseObject(res);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

@@ -14,8 +14,18 @@ public class AutomatedConfig {
 
     private ProjectConfig projectConfig;
 
+    private SwaggerConfig swaggerConfig;
+
     public ProjectConfig getProjectConfig() {
         return projectConfig;
+    }
+
+    public SwaggerConfig getSwaggerConfig() {
+        return swaggerConfig;
+    }
+
+    public void setSwaggerConfig(SwaggerConfig swaggerConfig) {
+        this.swaggerConfig = swaggerConfig;
     }
 
     public void setProjectConfig(ProjectConfig projectConfig) {
@@ -34,6 +44,7 @@ public class AutomatedConfig {
     public String toString() {
         return "AutomatedConfig{" +
                 "projectConfig=" + projectConfig +
+                ", swaggerConfig=" + swaggerConfig +
                 '}';
     }
 }
