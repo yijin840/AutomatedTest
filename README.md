@@ -8,6 +8,32 @@
 
 ## 构建
 
+yaml 配置文件如下
+
+- 项目名称（可选）
+- 项目路径（必填）
+- swagger路径 （可选，默认的话不需要改）
+- swaggerDoc 路径 （可选）
+- testUrl
+  - url （必填）
+  - type: (可选，默认是get请求)
+
+```yaml
+projectConfig:
+  name: demo
+  path: http://localhost:8078
+  swaggerPath: /api/swagger-ui.html
+  swaggerDoc: /v2/api-docs
+  testUrl: #表示要测试的URL
+    - url: /testPool
+      type: get
+    - url: /executeTask
+      type: get
+    - url: /testNull
+      type: get
+    - url: /testCachePool
+      type: get
+```
 build方法， 默认生成一份 test.json 文件，格式如下:
 
 ```json
