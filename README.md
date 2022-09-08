@@ -12,7 +12,7 @@ yaml 配置文件如下
 
 - 项目名称（可选）
 - 项目路径（必填）
-- swagger路径 （可选，默认的话不需要改）
+- swagger路径 (可选)
 - swaggerDoc 路径 （可选）
 - testUrl
   - url （必填）

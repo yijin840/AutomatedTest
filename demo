@@ -1,0 +1,26 @@
+{
+	"/executeTask":{
+		"headers":{},
+		"params":{},
+		"result":{},
+		"type":"get"
+	},
+	"/testPool":{
+		"headers":{},
+		"params":{},
+		"result":{},
+		"type":"get"
+	},
+	"/testNull":{
+		"headers":{},
+		"params":{},
+		"result":{},
+		"type":"get"
+	},
+	"/testCachePool":{
+		"headers":{},
+		"params":{},
+		"result":{},
+		"type":"get"
+	}
+}

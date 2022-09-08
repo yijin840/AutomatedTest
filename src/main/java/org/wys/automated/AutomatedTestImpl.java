@@ -3,6 +3,7 @@ package org.wys.automated;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import org.apache.commons.codec.binary.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -27,13 +29,18 @@ import java.util.Set;
 public class AutomatedTestImpl implements AutomatedTest {
 
     private final AutomatedConfig config;
-    private final String fileName = "test.json";
+    private final String fileName;
 
     public AutomatedTestImpl() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         config = objectMapper.readValue(this.getClass().getClassLoader().getResourceAsStream("config.yml"),
                 AutomatedConfig.class);
-        System.out.println(config);
+        String name = config.getProjectConfig().getName();
+        if(Objects.isNull(name) || name.length() == 0) {
+            fileName = "test";
+        } else {
+            fileName =  name + ".json";
+        }
     }
 
     @Override
@@ -42,6 +49,9 @@ public class AutomatedTestImpl implements AutomatedTest {
             throw new RuntimeException("当前配置文件已存在!");
         }
         String swaggerDoc = config.getProjectConfig().getSwaggerDoc();
+        if(Objects.isNull(swaggerDoc) || swaggerDoc.length() == 0) {
+            swaggerDoc = "/v2/api-docs";
+        }
         String projectPath = config.getProjectConfig().getPath();
         HttpGet httpGet = new HttpGet(projectPath + swaggerDoc);
         JSONObject jsonObject = null;
@@ -59,7 +69,7 @@ public class AutomatedTestImpl implements AutomatedTest {
             }
             System.out.println(key);
         }
-        FileUtil.saveTestJson(fileName, testConfig);
+        FileUtil.saveTestJson(config.getProjectConfig().getName(), testConfig);
     }
 
     @Override

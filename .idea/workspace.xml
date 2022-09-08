@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f57ad123-3a72-487f-bf24-be783d297fed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wys/automated/AutomatedTestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wys/automated/AutomatedTestImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +59,7 @@
     "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="AutomatedTestImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.wys.automated.AutomatedTestImpl" />
       <module name="AutomatedTest" />
@@ -71,8 +73,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.wys.Main" />
+      <module name="AutomatedTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.wys.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.AutomatedTestImpl" />
       </list>
     </recent_temporary>
@@ -86,7 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1662565888084</updated>
       <workItem from="1662565889473" duration="3374000" />
-      <workItem from="1662615484989" duration="11934000" />
+      <workItem from="1662615484989" duration="12669000" />
     </task>
     <servers />
   </component>
